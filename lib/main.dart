@@ -47,7 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
         centerTitle: true,
+        leading: const Column(
+          // widget kiri
+          children: [Icon(Icons.add), Text('Add')],
+        ),
         actions: const <Widget>[
+          // widget kanan
           Icon(Icons.person, size: 20, color: Colors.blue)
         ],
       ),
