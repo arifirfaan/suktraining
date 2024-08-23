@@ -8,10 +8,14 @@ class BottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-        bottom: 0,
+        bottom: 10,
         width: MediaQuery.of(context).size.width,
         child: Container(
-          color: Colors.amber,
+          margin: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.amber,
+          ),
           height: 80,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -59,7 +59,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
                 SizedBox(
                   height: 400,
-                  width: 300,
+                  width: MediaQuery.of(context).size.width,
                   child: ListView.builder(
                       itemCount: _buttonList.length,
                       itemBuilder: (context, int item) {
@@ -68,8 +68,8 @@ class _SettingPageState extends State<SettingPage> {
                             debugPrint("JAdi");
                           },
                           child: Container(
-                            //color: Colors.blueAccent,
                             height: 52,
+                            padding: EdgeInsets.symmetric(horizontal: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
