@@ -8,6 +8,24 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
+  /// function to show popup dialog
+
+  void _showPopup() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Register"),
+            content: Text("You need to register first before continue."),
+            actions: [
+              TextButton(onPressed: () {}, child: Text("Yes")),
+              TextButton(onPressed: () {}, child: Text("No"))
+            ],
+          );
+        }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +41,7 @@ class _SplashscreenState extends State<Splashscreen> {
               style: TextStyle(fontSize: 50, fontWeight: FontWeight.w500),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: _showPopup,
               child: Text("Continue"),
             )
           ],
