@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suktraining/dashboard_page.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -22,8 +23,7 @@ class _SplashscreenState extends State<Splashscreen> {
               TextButton(onPressed: () {}, child: Text("No"))
             ],
           );
-        }
-    );
+        });
   }
 
   @override
@@ -41,7 +41,12 @@ class _SplashscreenState extends State<Splashscreen> {
               style: TextStyle(fontSize: 50, fontWeight: FontWeight.w500),
             ),
             ElevatedButton(
-              onPressed: _showPopup,
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return DashboardPage();
+                }));
+              }, //_showPopup,
               child: Text("Continue"),
             )
           ],
