@@ -1,5 +1,5 @@
 class ModelPingat {
-  int idno;
+  String idno;
   String name;
   String jawatan;
   String jabatan;
@@ -12,8 +12,8 @@ class ModelPingat {
 
   factory ModelPingat.fromJson(Map<String, dynamic> json) {
     return ModelPingat(
-      idno: json['idno'],
-      name: json['name'],
+      idno: json['nokp'],
+      name: json['nama'],
       jawatan: json['jawatan'],
       jabatan: json['jabatan'],
     );

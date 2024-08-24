@@ -13,12 +13,18 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   late Future<List<ModelPingat>> _data;
+  String _dataAPi = "";
 
   @override
   void initState() {
     super.initState();
-    _data = loadApi();
-    debugPrint(_data.toString());
+    loadApi();
+    //debugPrint(_data.toString());
+  }
+
+  Future<void> loadAPIhere() async {
+    _dataAPi = await loadApi();
+    setState(() {});
   }
 
   @override
@@ -48,15 +54,17 @@ class _DashboardPageState extends State<DashboardPage> {
                         }),
                   ),
                   ElevatedButton(
-                      onPressed: () {
-                        Future<List<ModelPingat>> data = loadApi();
-                        debugPrint(data.toString());
+                      onPressed: () async {
+                        loadAPIhere();
+                        //Future<List<ModelPingat>> data = loadApi();
+                        //debugPrint(data.toString());
                         // Navigator.of(context)
                         //     .push(MaterialPageRoute(builder: (context) {
                         //   return SettingPage();
                         // }));
                       },
-                      child: Icon(Icons.settings))
+                      child: Icon(Icons.settings)),
+                  Text(_dataAPi)
                 ],
               ),
             ),
