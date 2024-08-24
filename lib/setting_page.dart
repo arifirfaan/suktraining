@@ -58,7 +58,7 @@ class _SettingPageState extends State<SettingPage> {
                   ],
                 ),
                 SizedBox(
-                  height: 400,
+                  height: 500,
                   width: MediaQuery.of(context).size.width,
                   child: ListView.builder(
                       itemCount: _buttonList.length,
@@ -80,7 +80,21 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                         );
                       }),
-                )
+                ),
+                InkWell(
+                  onTap: () {},
+                  child: Container(
+                      margin: const EdgeInsets.symmetric(vertical: 4),
+                      padding: const EdgeInsets.all(14),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.red),
+                      child: const Center(
+                          child: Text(
+                        "Logout",
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ))),
+                ),
               ],
             ),
           ),

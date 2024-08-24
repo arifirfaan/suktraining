@@ -41,20 +41,20 @@ class _DashboardPageState extends State<DashboardPage> {
             Center(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 400,
-                    width: MediaQuery.of(context).size.width,
-                    child: ListView.builder(
-                        itemCount: 10,
-                        itemBuilder: (context, int item) {
-                          return Container(
-                              height: 100,
-                              padding: EdgeInsets.symmetric(vertical: 10),
-                              margin: EdgeInsets.all(10),
-                              color: Colors.purpleAccent,
-                              child: Text("Data " + item.toString()));
-                        }),
-                  ),
+                  // SizedBox(
+                  //   height: 400,
+                  //   width: MediaQuery.of(context).size.width,
+                  //   child: ListView.builder(
+                  //       itemCount: 10,
+                  //       itemBuilder: (context, int item) {
+                  //         return Container(
+                  //             height: 100,
+                  //             padding: EdgeInsets.symmetric(vertical: 10),
+                  //             margin: EdgeInsets.all(10),
+                  //             color: Colors.purpleAccent,
+                  //             child: Text("Data " + item.toString()));
+                  //       }),
+                  // ),
                   ElevatedButton(
                       onPressed: () async {
                         loadAPIhere();
