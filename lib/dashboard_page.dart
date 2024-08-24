@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:suktraining/components/bottom_nav.dart';
+import 'package:suktraining/model/model_pingat.dart';
 import 'package:suktraining/setting_page.dart';
+import 'package:suktraining/utils/load_api.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -10,6 +12,15 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  late Future<List<ModelPingat>> _data;
+
+  @override
+  void initState() {
+    super.initState();
+    _data = loadApi();
+    debugPrint(_data.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +35,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 children: [
                   SizedBox(
                     height: 400,
-                    width: 300,
+                    width: MediaQuery.of(context).size.width,
                     child: ListView.builder(
                         itemCount: 10,
                         itemBuilder: (context, int item) {
@@ -38,10 +49,12 @@ class _DashboardPageState extends State<DashboardPage> {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return SettingPage();
-                        }));
+                        Future<List<ModelPingat>> data = loadApi();
+                        debugPrint(data.toString());
+                        // Navigator.of(context)
+                        //     .push(MaterialPageRoute(builder: (context) {
+                        //   return SettingPage();
+                        // }));
                       },
                       child: Icon(Icons.settings))
                 ],
