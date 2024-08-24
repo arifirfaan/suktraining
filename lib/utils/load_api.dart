@@ -20,3 +20,15 @@ Future<String> loadApi() async {
     throw Exception("Failed to load");
   }
 }
+
+Future<List<ModelPingat>> fetchRecipients(String id) async {
+  final response = await http.get(Uri.parse(
+      'https://pingat.perak.gov.my/webapi/getdatapingat.php?cari=$id'));
+
+  if (response.statusCode == 200) {
+    List jsonResponse = json.decode(response.body);
+    return jsonResponse.map((data) => ModelPingat.fromJson(data)).toList();
+  } else {
+    throw Exception('Failed to load recipients');
+  }
+}

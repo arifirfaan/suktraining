@@ -13,12 +13,14 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   late Future<List<ModelPingat>> _data;
+  late Future<List<ModelPingat>> _futureRecipients;
   String _dataAPi = "";
 
   @override
   void initState() {
     super.initState();
     loadApi();
+    _futureRecipients = fetchRecipients("801110085528");
     //debugPrint(_data.toString());
   }
 
@@ -56,15 +58,37 @@ class _DashboardPageState extends State<DashboardPage> {
                   ElevatedButton(
                       onPressed: () async {
                         loadAPIhere();
-                        //Future<List<ModelPingat>> data = loadApi();
-                        //debugPrint(data.toString());
-                        // Navigator.of(context)
-                        //     .push(MaterialPageRoute(builder: (context) {
-                        //   return SettingPage();
-                        // }));
                       },
                       child: Icon(Icons.settings)),
-                  Text(_dataAPi)
+                  Text(_dataAPi),
+                  Container(
+                    height: 300,
+                    child: FutureBuilder<List<ModelPingat>>(
+                      future: _futureRecipients,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Center(child: CircularProgressIndicator());
+                        } else if (snapshot.hasError) {
+                          return Center(
+                              child: Text('Error: ${snapshot.error}'));
+                        } else if (snapshot.hasData) {
+                          List<ModelPingat> recipients = snapshot.data!;
+                          return ListView.builder(
+                            itemCount: recipients.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                title: Text(recipients[index].nama),
+                                subtitle: Text(recipients[index].jawatan),
+                              );
+                            },
+                          );
+                        } else {
+                          return Center(child: Text('No recipients found'));
+                        }
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
